@@ -2,10 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Code Scanning') {
+            environment {
+                scannerHome = tool 'CliScanner'
+            }
             steps {
-                echo 'Hello World -- World'
+                withSonarQubeEnv('SonarQube'){
+                    echo "Start Scanning..."
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
         }
-    }
+	}
 }
