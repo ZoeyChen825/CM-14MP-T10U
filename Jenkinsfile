@@ -5,7 +5,7 @@ pipeline {
         stage('Run Python Script') {
             steps {
                 echo "Running Python Script..."
-                sh '/home/zoey/Jenkins/python_scripts/python3 redfish_test.py profile_get.json'
+                sh 'python3 /home/zoey/Jenkins/python_scripts/redfish_test.py /home/zoey/Jenkins/python_scripts/profile_get.json'
             }
         }
         stage('Code Scanning') {
